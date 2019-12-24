@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Learning AngularJS Controller</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"></script>
+        <script type="text/javascript">
+        var app = angular.module("angularcontroller", []);
+        app.controller("course", function()
+        {
+            this.Name = "AngularJS";
+            this.Module = "Controller";
+            this.Student = "Pruthvi";
+            this.Source = "YouTube";
+            this.SourceUrl = "https://www.youtube.com/watch?v=pzrLTg4EvsI";
+            this.Date = new Date(2019, 11, 22, 17, 20, 0);
+            this.CurrentDate = new Date();
+        });
+        </script>
+    </head>
+    <body ng-app="angularcontroller" ng-controller="course as o">
+        Hi, here is the cource info: <br/><br/>
+        {{o.Student}} is practising <b>{{o.Name}} {{o.Module}}</b> as on {{o.Date | date: 'fullDate'}}, {{o.Date | date: 'mediumTime'}}. <br/>
+        Source: <a href="{{o.SourceUrl}}">{{o.Source}}</a> <br/>
+        Current Date: {{o.CurrentDate | date: 'fullDate'}}, {{o.CurrentDate | date: 'mediumTime'}}
+    </body>
+</html>

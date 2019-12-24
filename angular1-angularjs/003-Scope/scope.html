@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Learning AngularJS Controller</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"></script>
+        <script type="text/javascript">
+        var app = angular.module("angularcontroller", []);
+        app.controller("course", function($scope)
+        {
+            $scope.Name = "AngularJS";
+            $scope.Module = "Scope";
+            $scope.Student = "Pruthvi";
+            $scope.Source = "YouTube";
+            $scope.SourceUrl = "https://youtu.be/FDhGmFul4YU?list=PLvZkOAgBYrsS_ugyamsNpCgLSmtIXZGiz";
+            $scope.Date = new Date(2019, 11, 22, 22, 33, 0);
+            $scope.CurrentDate = new Date();
+        });
+        app.controller("student", ["$scope", function(c)
+        {
+            c.Name = "Pruthvi";
+            c.LastName = "Kalidindi";
+            c.Dob = new Date(1988, 3, 13, 1, 33, 0);
+            c.getFullName = function(){ return this.Name + " " + this.LastName };
+        }]);
+        </script>
+    </head>
+    <body ng-app="angularcontroller">
+        <div ng-controller="course">
+        Hi, here is the cource info: <br/><br/>
+        {{Student}} is practising <b>{{Name}} {{Module}}</b> as on {{Date | date: 'fullDate'}}, {{Date | date: 'mediumTime'}}. <br/>
+        Source: <a href="{{SourceUrl}}">{{Source}}</a> <br/>
+        Current Date: {{CurrentDate | date: 'fullDate'}}, {{CurrentDate | date: 'mediumTime'}}
+        </div>
+        <div><br/></div>
+        <div ng-controller="student">Full name: {{getFullName()}}, DOB : {{Dob | date: 'fullDate'}}, {{Dob | date: 'mediumTime'}}</div>
+    </body>
+</html>
